@@ -1,21 +1,21 @@
 {
-    "name": "bitpay/prestashop",
-    "description": "BitPay payment plugin for PrestaShop",
+    "name": "globee-official/prestashop",
+    "description": "GloBee payment plugin for PrestaShop",
     "type": "whmcs-plugin",
-    "keywords": ["prestashop","plugin","payment","ecommerce","bitcoin","bitpay"],
-    "homepage": "https://github.com/bitpay/prestashop-plugin",
+    "keywords": ["prestashop","plugin","payment","ecommerce","bitcoin","globee"],
+    "homepage": "https://github.com/globee-official/prestashop-plugin",
     "license": "MIT",
     "support": {
-        "email": "support@bitpay.com",
-        "issues": "https://github.com/bitpay/prestashop-plugin/issues",
-        "source": "https://github.com/bitpay/prestashop-plugin"
+        "email": "support@globee.com",
+        "issues": "https://github.com/globee-official/prestashop-plugin/issues",
+        "source": "https://github.com/globee-official/prestashop-plugin"
     },
     "minimum-stability": "stable",
     "authors": [
         {
-            "name": "BitPay Integrations Development Team",
-            "email": "integrations@bitpay.com",
-            "homepage": "https://bitpay.com/integrations"
+            "name": "GloBee Integrations Development Team",
+            "email": "integrations@globee.com",
+            "homepage": "https://globee.com/integrations"
         }
     ],
     "require": {

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
         <name>bitpay</name>
-        <displayName><![CDATA[BitPay]]></displayName>
+        <displayName><![CDATA[GloBee]]></displayName>
         <version><![CDATA[0.4]]></version>
-        <description><![CDATA[Accepts Bitcoin payments via BitPay.]]></description>
-        <author><![CDATA[BitPay]]></author>
+        <description><![CDATA[Accepts Bitcoin payments via GloBee.]]></description>
+        <author><![CDATA[GloBee]]></author>
         <tab><![CDATA[payments_gateways]]></tab>
         <confirmUninstall><![CDATA[Are you sure you want to delete your details?]]></confirmUninstall>
         <is_configurable>1</is_configurable>

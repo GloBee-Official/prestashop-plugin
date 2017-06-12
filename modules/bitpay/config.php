@@ -1,6 +1,6 @@
 <?php
-  $bitpayurl = "https://bitpay.com";
-  //$bitpayurl = "https://test.bitpay.com";
+  //$bitpayurl = "https://globee.com";
+  $bitpayurl = "https://gustav.payb.ee";
   $apiurl = $bitpayurl;
   $sslport = 443;
   $verifypeer = 1;

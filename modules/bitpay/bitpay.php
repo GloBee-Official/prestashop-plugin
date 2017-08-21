@@ -140,7 +140,7 @@ class bitpay extends PaymentModule {
                        <h2>'.$this->l('Opening your GloBee account').'</h2>
                        <div style="clear: both;"></div>
                        <p>'.$this->l('When opening your GloBee account by clicking on the following image, you are helping us significantly to improve the GloBee solution:').'</p>
-                       <p style="text-align: center;"><a href="https://bitpay.com/"><img src="../modules/bitpay/prestashop_bitpay.png" alt="PrestaShop & bitpay" style="margin-top: 12px;" /></a></p>
+                       <p style="text-align: center;"><a href="https://globee.com/"><img src="../modules/bitpay/prestashop_bitpay.png" alt="PrestaShop & bitpay" style="margin-top: 12px;" /></a></p>
                        <div style="clear: right;"></div>
                        </div>
                        <img src="../modules/bitpay/bitcoin.png" style="float:left; margin-right:15px;" />

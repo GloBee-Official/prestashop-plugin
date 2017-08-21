@@ -16,7 +16,7 @@
 
 <form action="{$link->getModuleLink('bitpay', 'validation', [], true)|escape:'html'}" method="post">
 <p>
-	<img src="{$this_path}bitcoin.png" alt="{l s='Pay with BitPay' mod='bitpay'}" style="float:left; margin: 0px 10px 5px 0px;" />
+	<img src="{$this_path}bitcoin.png" alt="{l s='Pay with GloBee' mod='bitpay'}" style="float:left; margin: 0px 10px 5px 0px;" />
 	{l s='You have chosen to pay by Bitcoin.' mod='bitpay'}
 	<br/><br />
 	{l s='Here is a short summary of your order:' mod='bitpay'}

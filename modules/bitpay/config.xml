@@ -3,7 +3,7 @@
         <name>bitpay</name>
         <displayName><![CDATA[BitPay]]></displayName>
         <version><![CDATA[0.4]]></version>
-        <description><![CDATA[Accepts Bitcoin payments via BitPay.]]></description>
+        <description><![CDATA[Accepts Bitcoin payments via GloBee.]]></description>
         <author><![CDATA[BitPay]]></author>
         <tab><![CDATA[payments_gateways]]></tab>
         <confirmUninstall><![CDATA[Are you sure you want to delete your details?]]></confirmUninstall>

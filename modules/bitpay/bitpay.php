@@ -51,7 +51,7 @@ class bitpay extends PaymentModule {
       include(dirname(__FILE__).'/config.php');
       $this->name            = 'bitpay';
       $this->version         = '0.4';
-      $this->author          = 'BitPay';
+      $this->author          = 'GloBee';
       $this->className       = 'bitpay';
       $this->currencies      = true;
       $this->currencies_mode = 'checkbox';
@@ -68,7 +68,7 @@ class bitpay extends PaymentModule {
 
       $this->page = basename(__FILE__, '.php');
       $this->displayName      = $this->l('bitpay');
-      $this->description      = $this->l('Accepts Bitcoin payments via BitPay.');
+      $this->description      = $this->l('Accepts Bitcoin payments via GloBee.');
       $this->confirmUninstall = $this->l('Are you sure you want to delete your details?');
 
       // Backward compatibility
@@ -137,16 +137,16 @@ class bitpay extends PaymentModule {
 
     private function _setbitpaySubscription() {
       $this->_html .= '<div style="float: right; width: 440px; height: 150px; border: dashed 1px #666; padding: 8px; margin-left: 12px;">
-                       <h2>'.$this->l('Opening your bitpay account').'</h2>
+                       <h2>'.$this->l('Opening your GloBee account').'</h2>
                        <div style="clear: both;"></div>
-                       <p>'.$this->l('When opening your BitPay account by clicking on the following image, you are helping us significantly to improve the BitPay solution:').'</p>
+                       <p>'.$this->l('When opening your GloBee account by clicking on the following image, you are helping us significantly to improve the GloBee solution:').'</p>
                        <p style="text-align: center;"><a href="https://bitpay.com/"><img src="../modules/bitpay/prestashop_bitpay.png" alt="PrestaShop & bitpay" style="margin-top: 12px;" /></a></p>
                        <div style="clear: right;"></div>
                        </div>
                        <img src="../modules/bitpay/bitcoin.png" style="float:left; margin-right:15px;" />
-                       <b>'.$this->l('This module allows you to accept payments by BitPay.').'</b><br /><br />
-                       '.$this->l('If the client chooses this payment mode, your BitPay account will be automatically credited.').'<br />
-                       '.$this->l('You need to configure your BitPay account before using this module.').'
+                       <b>'.$this->l('This module allows you to accept payments by GloBee.').'</b><br /><br />
+                       '.$this->l('If the client chooses this payment mode, your GloBee account will be automatically credited.').'<br />
+                       '.$this->l('You need to configure your GloBee account before using this module.').'
                        <div style="clear:both;">&nbsp;</div>';
     }
 

@@ -2,7 +2,7 @@
 
 <legend>
 
-     {l s='BitPay Information' mod='bitpay'}
+     {l s='GloBee Information' mod='bitpay'}
 
 </legend>
 

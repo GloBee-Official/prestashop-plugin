@@ -50,7 +50,7 @@ class bitpay extends PaymentModule {
     public function __construct() {
       include(dirname(__FILE__).'/config.php');
       $this->name            = 'bitpay';
-      $this->version         = '0.4';
+      $this->version         = '1.0.0';
       $this->author          = 'GloBee';
       $this->className       = 'bitpay';
       $this->currencies      = true;

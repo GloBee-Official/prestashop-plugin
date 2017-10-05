@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>GloBee</name>
+    <displayName><![CDATA[GloBee]]></displayName>
+    <version><![CDATA[0.4]]></version>
+    <description><![CDATA[Accepts crypto-currency payments via GloBee.]]></description>
+    <author><![CDATA[GloBee]]></author>
+    <tab><![CDATA[payments_gateways]]></tab>
+    <confirmUninstall><![CDATA[Are you sure you want to delete your details?]]></confirmUninstall>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
+    <limited_countries>0</limited_countries>
+</module>

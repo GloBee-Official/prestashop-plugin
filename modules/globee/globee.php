@@ -27,6 +27,8 @@
  * Updated to work with Prestashop 1.6 by Rich Morgan, rich@bitpay.com
  */
 
+use PrestaShop\PrestaShop\Core\Payment\PaymentOption;
+
 if (!defined('_PS_VERSION_')) {
     exit;
 }
@@ -64,13 +66,13 @@ class globee extends PaymentModule
         ];
 
         $this->name = 'globee';
-        $this->version = '1.0.2';
+        $this->version = '2.0.0';
         $this->author = 'GloBee';
         $this->className = 'globee';
         $this->currencies = true;
         $this->currencies_mode = 'checkbox';
         $this->tab = 'payments_gateways';
-
+        $this->display = 'view';
         if (Configuration::get('bitpay_TESTMODE') == true) {
             $this->bitpayurl = $settings['testnet'];
             $this->apiurl = $settings['testnet'];
@@ -88,7 +90,7 @@ class globee extends PaymentModule
 
         $this->page = basename(__FILE__, '.php');
         $this->displayName = $this->l('GloBee');
-        $this->description = $this->l('Accepts crypto-currency payments via GloBee.');
+        $this->description = $this->l('Accept cryptocurrency payments with GloBee.');
         $this->confirmUninstall = $this->l('Are you sure you want to delete your details?');
 
         // Backward compatibility
@@ -104,7 +106,7 @@ class globee extends PaymentModule
             return false;
         }
 
-        if (!parent::install() || !$this->registerHook('invoice') || !$this->registerHook('payment') || !$this->registerHook('paymentReturn')) {
+        if (!parent::install() || !$this->registerHook('invoice') || !$this->registerHook('payment') || !$this->registerHook('paymentReturn') || !$this->registerHook('paymentOptions')) {
             return false;
         }
 
@@ -208,12 +210,51 @@ class globee extends PaymentModule
 
     public function hookPayment($params)
     {
+        if ( ! $this->active) {
+            return;
+        }
+        return $this->context->smarty->fetch(__FILE__, 'payment.tpl');
+    }
+
+    /**
+     * This determines what will be displayed on the Payment Screen during the checkout process
+     * @param $params
+     * @return mixed
+     */
+    public function hookPaymentOptions($params)
+    {
+        if ( ! $this->active) {
+            return;
+        }
+        return [
+            (new PaymentOption())
+                ->setCallToActionText($this->l('Pay with Cryptocurrency Powered by GloBee'))
+                ->setAction($this->context->link->getModuleLink($this->name, 'payment'))
+        ];
+    }
+
+    public function hookInvoice($params)
+    {
         global $smarty;
+        $id_order = $params['id_order'];
+        $bitcoinpaymentdetails = $this->readBitcoinpaymentdetails($id_order);
+
         $smarty->assign([
+            'bitpayurl' =>  $this->bitpayurl,
+            'invoice_id' => $bitcoinpaymentdetails['invoice_id'],
+            'status' => $bitcoinpaymentdetails['status'],
+            'id_order' => $id_order,
+            'this_page' => $_SERVER['REQUEST_URI'],
             'this_path' => $this->_path,
             'this_path_ssl' => Configuration::get('PS_FO_PROTOCOL').$_SERVER['HTTP_HOST'].__PS_BASE_URI__."modules/{$this->name}/"
         ]);
-        return $this->display(__FILE__, 'payment.tpl');
+        return $this->display(__FILE__, 'invoice_block.tpl');
+    }
+
+    public function hookPaymentReturn($params)
+    {
+        $this->smarty->assign('state', $params['order']->current_state);
+        return $this->display(__FILE__, 'payment_return.tpl');
     }
 
     public function execPayment($cart)
@@ -355,38 +396,6 @@ class globee extends PaymentModule
         $db = Db::getInstance();
         $result = $db->ExecuteS('SELECT * FROM `' . _DB_PREFIX_ . 'order_bitcoin` WHERE `id_order` = ' . intval($id_order) . ';');
         return $result[0];
-    }
-
-    public function hookInvoice($params)
-    {
-        global $smarty;
-        $id_order = $params['id_order'];
-        $bitcoinpaymentdetails = $this->readBitcoinpaymentdetails($id_order);
-
-        $smarty->assign([
-            'bitpayurl' =>  $this->bitpayurl,
-            'invoice_id' => $bitcoinpaymentdetails['invoice_id'],
-            'status' => $bitcoinpaymentdetails['status'],
-            'id_order' => $id_order,
-            'this_page' => $_SERVER['REQUEST_URI'],
-            'this_path' => $this->_path,
-            'this_path_ssl' => Configuration::get('PS_FO_PROTOCOL').$_SERVER['HTTP_HOST'].__PS_BASE_URI__."modules/{$this->name}/"
-        ]);
-        return $this->display(__FILE__, 'invoice_block.tpl');
-    }
-
-    public function hookPaymentReturn($params)
-    {
-        global $smarty;
-        $order = ($params['objOrder']);
-        $state = $order->current_state;
-
-        $smarty->assign([
-            'state' => $state,
-            'this_path' => $this->_path,
-            'this_path_ssl' => Configuration::get('PS_FO_PROTOCOL').$_SERVER['HTTP_HOST'].__PS_BASE_URI__."modules/{$this->name}/"
-        ]);
-        return $this->display(__FILE__, 'payment_return.tpl');
     }
     
     public function rmJSONdecode($jsondata)

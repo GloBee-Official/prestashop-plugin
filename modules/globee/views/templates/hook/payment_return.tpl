@@ -1,7 +1,7 @@
 {if $state == '2'}
-    <p>{l s='Your order on %s is complete.' sprintf=$shop_name mod='globee'}
-        <br /><br /> <strong>{l s='Your order will be sent as soon as your payment is confirmed by the relevant crypto-currency network.' mod='globee'}</strong>
-        <br /><br />{l s='If you have questions, comments or concerns, please contact our' mod='globee'} <a href="{$link->getPageLink('contact', true)|escape:'html'}">{l s='expert customer support team. ' mod='globee'}</a>
+    <p>
+        <strong>Your order will be sent as soon as your payment is confirmed by the relevant crypto-currency network.</strong>
+        <br /><br />If you have questions, comments or concerns, please contact our <a href="{$link->getPageLink('contact', true)|escape:'html'}">{l s='expert customer support team.' mod='globee'}</a>
     </p>
 {else}
     <p class="warning">

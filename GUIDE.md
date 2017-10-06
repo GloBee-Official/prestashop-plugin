@@ -1,6 +1,8 @@
 # Using the GloBee plugin for Prestashop
 
-## Last Cart Version Tested: 1.6.1.17
+## Last Cart Version Tested: 
+    - For PrestaShop 1.7.*: v1.7.2.2
+    - For PrestaShop 1.6.*: v1.6.1.17
 
 ## Prerequisites
 You must have a GloBee merchant account to use this plugin.  It's free to 
@@ -9,18 +11,28 @@ You must have a GloBee merchant account to use this plugin.  It's free to
 
 ## Server Requirements
 
-+ PrestaShop 1.6+
++ PrestaShop 1.6+ or newer
 + PHP 5+
 + Curl PHP Extension
 + JSON PHP Extension
 
 ## Plugin Configuration
 
+<strong>For Prestashop versions 1.7 and newer:</strong><br />
+1. Sign in to your Prestashop Admin Panel
+2. Click on "Modules" > "Modules and Services".
+3. Click on "Upload a Module"
+4. Upload this [zip file](https://github.com/GloBee-Official/prestashop-plugin/files/1362493/globee-prestashop-1.6.1.17.zip) to your PrestaShop installation.<br />
+5. Go to your PrestaShop administration. Modules -> "GloBee" click [Configure]<br />
+6. Create an API Key in your GloBee account at globee.com.<br />
+7. Enter your API Key from step 4.
+8. Choose "Low" or "Medium" Speed. The High Speed setting is not supported.
+
 <strong>For Prestashop versions 1.6 and newer:</strong><br />
 1. Sign in to your Prestashop Admin Panel
 2. Click on "Modules and Services".
 3. Click on "Add a new module"
-4. Upload [zip file](https://github.com/GloBee-Official/prestashop-plugin/files/1362493/globee-prestashop-1.6.1.17.zip) to your PrestaShop installation.<br />
+4. Upload this [zip file](https://github.com/GloBee-Official/prestashop-plugin/files/1362493/globee-prestashop-1.6.1.17.zip) to your PrestaShop installation.<br />
 5. Go to your PrestaShop administration. Modules -> "GloBee" click [Install]<br />
 6. Go to your PrestaShop administration. Modules -> "GloBee" click [Configure]<br />
 7. Create an API Key in your GloBee account at globee.com.<br />

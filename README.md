@@ -1,20 +1,20 @@
-# Notice
+# Prestashop Payment Module for the GloBee System
 
 This is a Community-supported project.
 
 # Description
 
-Crypto-currency payment plugin for PrestaShop using the globee.com service.
+Accept Crypto-currency payments on your PrestaShop system using [GloBee.com](https://globee.com).
 
 ## Quick Start Guide
 
-To get up and running with our plugin quickly, see the GUIDE here: https://github.com/bitpay/prestashop-plugin/blob/master/GUIDE.md
+To get up and running with our plugin quickly, see the [GUIDE](https://github.com/GloBee-Official/prestashop-plugin/blob/master/GUIDE.md)
 
 # Support
 
-## BitPay Support
-
-* Last Cart Version Tested: 1.6.1.17
+* Last Cart Version Tested:
+    - For Version 1.7.*: Prestashop v1.7.2.2 [View Stable Release](https://github.com/GloBee-Official/prestashop-plugin/releases/tag/1.7.2.2)
+    - For Version 1.6.*: Prestashop v1.6.1.17 [View Stable Release](https://github.com/GloBee-Official/prestashop-plugin/releases/tag/1.6.1.17)
 * [GitHub Issues](https://github.com/globee-official/prestashop-plugin/issues)
   * Open an issue if you are having issues with this plugin.
 

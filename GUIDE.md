@@ -22,7 +22,7 @@ You must have a GloBee merchant account to use this plugin.  It's free to
 1. Sign in to your Prestashop Admin Panel
 2. Click on "Modules" > "Modules and Services".
 3. Click on "Upload a Module"
-4. Upload this [zip file](https://github.com/GloBee-Official/prestashop-plugin/files/1362493/globee-prestashop-1.6.1.17.zip) to your PrestaShop installation.<br />
+4. Upload this [zip file](https://github.com/GloBee-Official/prestashop-plugin/files/1362800/globee-prestashop-1.7.2.2.zip) to your PrestaShop installation.<br />
 5. Go to your PrestaShop administration. Modules -> "GloBee" click [Configure]<br />
 6. Create an API Key in your GloBee account at globee.com.<br />
 7. Enter your API Key from step 4.

@@ -1,4 +1,4 @@
-# Using the BitPay plugin for Prestashop
+# Using the GloBee plugin for Prestashop
 
 ## Last Cart Version Tested: 1.6.1.17
 
@@ -17,24 +17,26 @@ You must have a GloBee merchant account to use this plugin.  It's free to
 ## Plugin Configuration
 
 <strong>For Prestashop versions 1.6 and newer:</strong><br />
-1. Upload files to your PrestaShop installation.<br />
-2. Go to your PrestaShop administration. Modules -> "GloBee" click [Install]<br />
-3. Go to your PrestaShop administration. Modules -> "GloBee" click [Configure]<br />
-4. Create an API Key in your GloBee account at globee.com.<br />
-5. Enter your API Key from step 4.
-6. Choose "Low" or "Medium" Speed. The High Speed setting is not supported.
+1. Sign in to your Prestashop Admin Panel
+2. Click on "Modules and Services".
+3. Click on "Add a new module"
+4. Upload [zip file](https://github.com/GloBee-Official/prestashop-plugin/files/1362493/globee-prestashop-1.6.1.17.zip) to your PrestaShop installation.<br />
+5. Go to your PrestaShop administration. Modules -> "GloBee" click [Install]<br />
+6. Go to your PrestaShop administration. Modules -> "GloBee" click [Configure]<br />
+7. Create an API Key in your GloBee account at globee.com.<br />
+8. Enter your API Key from step 4.
+9. Choose "Low" or "Medium" Speed. The High Speed setting is not supported.
 
 # Usage
 
-The PrestaShop plugin is currently in Advanced Beta stage. Customers are able to choose "Pay With GloBee" and make 
-orders, which will be communicated to back end systems. GloBee IPNs are processed by the back end system and appear 
-as messages on each order. Order status does not update with each new message. Merchants should receive emails from 
-GloBee advising them of the current status of orders, and of course when an order is confirmed it can be viewed in 
-your GloBee Dashboard.
+Customers are able to choose "Pay With GloBee" when checking out on Prestashop.
+They are then redirected to a payment interstitial, where they can pay for the order using a range of different crypto-
+currencies. Once payment has been made, they are redirected back to the Prestashop page, where they can continue shopping.
+Both the GloBee System and the Prestashop Order is processed and updated by means of backend systems, to ensure that the
+merchant can verify payments and process orders.
 
-The Prestashop Plugin is under heavy development, check back frequently for updates. Please help us improve this 
-plugin by reporting any additional issues, either by email, through our support ticket system, or by opening a 
-github issue.
+Please help us improve this plugin by reporting any additional issues, either by email, through our support ticket system, 
+or by opening a github issue.
 
 # Support
 

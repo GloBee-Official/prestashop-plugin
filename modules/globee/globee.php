@@ -225,7 +225,7 @@ class globee extends PaymentModule
         $options['currency'] = $currency->iso_code;
         $total = $cart->getOrderTotal(true);
 
-        $options['notificationURL'] = (Configuration::get('PS_SSL_ENABLED') ? 'https://' : 'http://').htmlspecialchars($_SERVER['HTTP_HOST'], ENT_COMPAT, 'UTF-8').__PS_BASE_URI__.'modules/'.$this->name.'/ipn.php';
+        $options['notificationURL'] = '';
         if (_PS_VERSION_ <= '1.5') {
             $options['redirectURL'] = (Configuration::get('PS_SSL_ENABLED') ? 'https://' : 'http://').htmlspecialchars($_SERVER['HTTP_HOST'], ENT_COMPAT, 'UTF-8').__PS_BASE_URI__.'order-confirmation.php?id_cart='.$cart->id.'&id_module='.$this->id.'&id_order='.$this->currentOrder;
         }else {
@@ -556,5 +556,37 @@ class globee extends PaymentModule
             $jsondata = '{"' . $data . '"}';
         }
         return $jsondata;
+    }
+
+    public function get_invoice($invoiceID)
+    {
+        $curl = curl_init($this->apiurl.'/api/invoice/'.$invoiceID);
+        $length = 0;
+        $uname  = base64_encode(Configuration::get('bitpay_APIKEY'));
+        $header = array(
+            'Content-Type: application/json',
+            'Content-Length: ' . $length,
+            'Authorization: Basic ' . $uname,
+            'X-BitPay-Plugin-Info: prestashop0.4',
+        );
+
+        curl_setopt($curl, CURLINFO_HEADER_OUT, true);
+        curl_setopt($curl, CURLOPT_PORT, $this->sslport);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC ) ;
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, $this->verifypeer); // verify certificate (1)
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, $this->verifyhost); // check existence of CN and verify that it matches hostname (2)
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_FORBID_REUSE, 1);
+        curl_setopt($curl, CURLOPT_FRESH_CONNECT, 1);
+
+        $responseString = curl_exec($curl);
+        $results = json_decode($responseString, true);
+
+        if(isset($results['id']) && ! empty($results['id'])) {
+            return $results;
+        }
+        return false;
     }
 }

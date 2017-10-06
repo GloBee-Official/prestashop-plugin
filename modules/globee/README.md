@@ -41,8 +41,6 @@ github issue.
 
 * [GitHub Issues](https://github.com/globee-official/prestashop-plugin/issues)
   * Open an issue if you are having issues with this plugin.
-* [Support](https://support.globee.com)
-  * GloBee merchant support documentation
 
 ## PrestaShop Support
 

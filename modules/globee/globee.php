@@ -59,8 +59,8 @@ class globee extends PaymentModule
             'livenet' => 'https://globee.com',
             'testnet' => 'https://test.globee.com',
             'port' => 443,
-            'verify_peer' => 1,
-            'verify_host' => 2,
+            'verify_peer' => true,
+            'verify_host' => true,
         ];
 
         $this->name = 'globee';
@@ -276,7 +276,7 @@ class globee extends PaymentModule
             $post = $this->rmJSONencode($post);
         }
 
-        $curl = curl_init($this->apiurl.'/api/invoice/');
+        $curl = curl_init($this->apiurl . '/api/invoice');
         $length = 0;
 
         if ($post) {
@@ -290,7 +290,7 @@ class globee extends PaymentModule
             'Content-Type: application/json',
             'Content-Length: ' . $length,
             'Authorization: Basic ' . $uname,
-            'X-BitPay-Plugin-Info: prestashop0.4',
+            'X-BitPay-Plugin-Info: Prestashop1.6',
         ];
 
         curl_setopt($curl, CURLINFO_HEADER_OUT, true);
@@ -303,6 +303,7 @@ class globee extends PaymentModule
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_FORBID_REUSE, 1);
         curl_setopt($curl, CURLOPT_FRESH_CONNECT, 1);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 
         $responseString = curl_exec($curl);
 
@@ -321,21 +322,24 @@ class globee extends PaymentModule
 
         if (isset($response['data'])) {
             $response = $response['data'];
+            if (isset($response['url'])) {
+                header('Location:  ' . $response['url']);
+                return;
+            }
         }
 
         if (isset($response['error'])) {
             bplog($response['error']);
             die(Tools::displayError("Error occurred! (" . $response['error']['type'] . " - " . $response['error']['message'] . ")"));
 
-        } else if(isset($response['type']) && $response['type'] == 'validationError') {
+        } elseif (isset($response['type']) && $response['type'] == 'validationError') {
             die(Tools::displayError("Error: " . $response['message']));
 
-        } else if(!$response['url']) {
-            die(Tools::displayError("Error: Invalid Response - " . $response));
-
-        } else {
-            header('Location:  ' . $response['url']);
+        } elseif (empty($response)) {
+            die(Tools::displayError("Empty response received "));
         }
+
+        die(Tools::displayError("Invalid response received: " . json_encode($response)));
     }
 
     public function writeDetails($id_order, $cart_id, $invoice_id, $status)
